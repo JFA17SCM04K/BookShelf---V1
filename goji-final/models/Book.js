@@ -1,7 +1,4 @@
 var mongoose = require('mongoose');
-// var dateFormat = require('dateformat');
-// var now = new Date();
-// dateFormat(now, shortDate);
 var date = require('date-and-time');
 var now = new Date();
 

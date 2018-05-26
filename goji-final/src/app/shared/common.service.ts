@@ -1,3 +1,5 @@
+// This is the service that is responsible for making all the http requests to the backend
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -23,7 +25,7 @@ export class CommonService {
   }
 
   //Create Books - post
-  storeRecipes(newBook) {
+  storeBooks(newBook) {
     console.log("the value of new book is"+newBook);
     return this.http.post('/book', newBook, {
       observe: 'body'

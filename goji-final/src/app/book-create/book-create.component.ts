@@ -24,16 +24,21 @@ export class BookCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  //saveBook function is called when a new book entry is done and Add Book button is clicked.
+  //So, this function calls storeBooks function present in the CommonService which in turn makes an http request
+  //to the backemd to the CREATE Route.
+  //AFter being added to the db, it navigates to the /book-details route that shows the details of that nnew book added.
+  //Further, a snackbar message pops up saying that the book has been createdd an this msg stays for 20000 msecs.
   saveBook(form: NgForm) {
     console.log("Inside the on save");
     console.log("seeeeeeeeeeeeeeeeeee");
     console.log(form);
-    this.commonService.storeRecipes(this.book)
+    this.commonService.storeBooks(this.book)
       .subscribe((response) => {
-          console.log("res is");
-          console.log(response);
+          // console.log("res is");
+          // console.log(response);
           let id = response['_id'];
-          console.log("id is"+id);
+          // console.log("id is"+id);
           this.router.navigate(['/book-details', id], {relativeTo: this.route});
           this.snackBar.open("Book has been created","OK",{
             duration: 20000,
@@ -43,41 +48,4 @@ export class BookCreateComponent implements OnInit {
         }
       );
   }
-
-  // openSnackBar() {
-  //   this.snackBar.open("Book with this ISBN already exists", "OK", {
-  //     duration: 2000,
-  //   });
-  // }
-
-  // saveBook() {
-  //   console.log("Inside the on save");
-  //   this.commonService.storeRecipes(this.book)
-  //     .subscribe((response) => {
-  //
-  //       console.log("response is"+response);
-  //
-  //           if(response['exists'] == 1){
-  //               console.log("The book with this isbn already exists");
-  //               console.log(response['exists']);
-  //               this.snackBar.open("Book with this ISBN already exists", "OK", {
-  //                 duration: 20000,
-  //               });
-  //               this.router.navigate(['/books'], {relativeTo: this.route});
-  //           }
-  //           else{
-  //                 console.log("inside the else asfter snackbar");
-  //                 console.log(response['exists']);
-  //                 console.log("res is");
-  //                 console.log(response);
-  //                 let id = response['_id'];
-  //                 console.log("id is"+id);
-  //                 this.router.navigate(['/book-details', id], {relativeTo: this.route});
-  //               }
-  //           }, (err) =>{
-  //             console.log(err);
-  //           });
-  //
-  //     }
-
-    }
+}

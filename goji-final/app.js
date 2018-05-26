@@ -17,14 +17,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/books', express.static(path.join(__dirname, 'dist')));
 app.use('/book', book);
 
-// app.use(function (req, res, next) {
-//      res.setHeader('Access-Control-Allow-Origin', 'http://goji-systems.s3-website.us-east-2.amazonaws.com');
-//      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//      res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//      res.setHeader('Access-Control-Allow-Credentials', true);
-//      next();
-//  });
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -48,31 +40,6 @@ app.use(function(err, req, res, next) {
 mongoose.connect('mongodb://JoeldeepKaurDhamija:Joeldeep@ds141406.mlab.com:41406/goji-systems', { promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
-
-
-//SEEDING THE DB
-// var newBook ={ "isbn":"028882, 97885654450110",
-//                 "title":"The Test of My Life",
-//                 "author": "Yuvraj Singh",
-//                 "description":"Autobiography by Yuvraj Singh",
-//                 "publisher":"youwecan.com",
-//                 "published_date": 09/08/2015,
-//                 "available": "Yes",
-//                 "genre": "Fiction",
-//                 "type": ['New','Kindle Version'] };
-// Book.create(newBook, function (err, post) {
-//       if (err) console.log(err);
-//       console.log(post);
-//   });
-
-// app.get('/charts', function(req, res){
-//   console.log("Inside the charts route");
-//   // const query = [{$group:{_id:'$available',total:{$sum:1}}}];
-//   // Book.aggregate(query, function(err, resultOut){
-//   //   if(err) return next(err);
-//   //   console.log("Inside the charts");
-//   // });
-// })
 
 
 app.listen(process.env.PORT || 3000, process.env.IP, function(){

@@ -1,3 +1,4 @@
+<!-- This template shows the charts -->
 <div class="ui-g">
 <mat-drawer-container class="example-container" style="background-color:#3f51b5;">
   <mat-drawer mode="side" opened="true" style="background-color:#3f51b5;">
@@ -15,10 +16,10 @@
         <h2>BOOKS ANALYTICS</h2>
       <div class="ui-g">
         <div class="ui-g-12">
-          <!-- <p-button label="Click" (click)="getCharts()"></p-button> -->
+
           <button mat-button style="border: 1px solid;" color="primary" (click)="getChartAsPerGenre('availability')">AVAILABILITY STATISTICS</button>
           <button mat-button style="border: 1px solid;" color="primary" (click)="getChartAsPerGenre('genre')">GENRE STATISTICS</button>
-          <!-- <p-button label="Analyse As Per Genre" (click)="getChartAsPerGenre()"></p-button> -->
+
         </div>
         <div class="ui-g-12">
           <p-chart type="pie" [data]="data" [options]="options"></p-chart>

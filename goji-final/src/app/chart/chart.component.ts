@@ -19,6 +19,10 @@ export class ChartComponent implements OnInit {
 
   ngOnInit() {}
 
+//This application analyses the books as per twocategories:
+//1. GENRE
+//2. Availability
+
 
   getChartAsPerGenre(value){
         console.log("value is "+value);
@@ -51,7 +55,9 @@ export class ChartComponent implements OnInit {
                     position: 'bottom'
                 }
             };
-
+            //1. GENRE:
+            //So, it goes like - it calls the getChartDataNew() function of the CommonService which in turn initiates the http request
+            //to the backend that has the agrregate query to find all the books and group them as per their genre with their counts.
         if(value == 'genre'){
           console.log("if part is triggered");
           this.commonService.getChartDataNew()
@@ -74,7 +80,11 @@ export class ChartComponent implements OnInit {
 
 
             });
-        }else{
+        }
+        //1. AVAILABILITY:
+        //So, it goes like - it calls the getChartData() function of the CommonService which in turn initiates the http request
+        //to the backend that has the agrregate query to find all the books and group them as per their Availability with their counts.
+        else{
           console.log("else part is triggered");
           this.commonService.getChartData()
             .subscribe(data =>{

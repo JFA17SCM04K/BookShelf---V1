@@ -21,11 +21,13 @@ export class BookEditComponent implements OnInit {
               private commonService: CommonService,
               public snackBar: MatSnackBar) { }
 
+//Fetches the 'id' from the route and calls the getBook() function.
   ngOnInit() {
     this.getBook(this.route.snapshot.params['id']);
   }
 
-
+//Calls the getOneBook function from the CommonService that initiates the http request to the back end to get one book corresponding to that id.
+//AFter fetching the response the data is store in the book variable.
   getBook(id){
   this.commonService.getOneBook(id)
     .subscribe(data=>{
@@ -33,7 +35,10 @@ export class BookEditComponent implements OnInit {
     })
   }
 
-
+//On hitting Edit button, this function is called that further calls the updateExistingBook function of the CommonService
+//that initiates the http req to backend to call the update route which - finds the Book with this 'id' an updates it.
+//After this, the page is navigated to the /book-details/:id to see the changes made. Also, after editting
+//the nackbar message pops up saying that the 'Book has been eddited'.
   updateBook(id, data){
     this.commonService.updateExistingBook(id, data)
       .subscribe((response)=>{
@@ -47,13 +52,9 @@ export class BookEditComponent implements OnInit {
       })
   }
 
+//There is a way to clear all the fields of the book in the edit form.
   clear(bf: NgForm){
     bf.reset();
   }
 
 }
-// openSnackBar() {
-//   this.snackBar.open("Book with this ISBN already exists", "OK", {
-//     duration: 2000,
-//   });
-// }

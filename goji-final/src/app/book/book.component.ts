@@ -11,16 +11,11 @@ import { Observable } from 'rxjs/Observable';
 })
 export class BookComponent implements OnInit {
 
-  animal: string;
-  name: string;
   books: any;
-  total: any=0;
-  constructor(private http: HttpClient,
-              private router: Router,
-              private commonService: CommonService) {
+  constructor(private commonService: CommonService) {}
 
-  }
-
+  //Calls the service that initiates the http request to get all the books from the db and then subscribes to the response
+  //and puts it to the books.
   ngOnInit() {
     this.commonService.getBooks()
       .subscribe(data =>{
