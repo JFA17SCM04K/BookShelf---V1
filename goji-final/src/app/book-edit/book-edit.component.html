@@ -1,0 +1,71 @@
+
+<div class="ui-g-12">
+<mat-drawer-container class="example-container" style="background-color:#3f51b5;">
+  <mat-drawer mode="side" opened="true" style="background-color:#3f51b5;">
+    <div class="ui-g">
+      <mat-list>
+        <mat-list-item style="cursor:pointer;color:white;" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/book-create">Add Books</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item style="cursor:pointer;color:white;" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/books/charts">Analysis</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </div>
+  </mat-drawer>
+    <mat-drawer-content>
+      <mat-card style="margin: 10px 200px 10px 100px;border: 0.1px solid;height: 800px;">
+
+        <h4 style="font-size:20px;margin: 20px 100px 20px 300px;">EDIT BOOK</h4>
+        <button type="button" pButton (click)="clear(bookForm)" icon="fa-close" style="float:left" label="Clear Form" class="ui-button-danger"></button>
+         <form (ngSubmit)="updateBook(book._id,book)" #bookForm="ngForm" style="margin: 40px 100px 20px 200px;">
+         <span class="ui-float-label">
+             <input id="float-input" type="text" pInputText [(ngModel)]="book.isbn" name="isbn" required>
+             <label for="float-input">ISBN</label>
+         </span>
+         <br>
+         <span class="ui-float-label">
+             <input id="float-input" type="text" pInputText [(ngModel)]="book.title" name="title" required>
+             <label for="float-input">Title</label>
+         </span>
+         <br>
+         <span class="ui-float-label">
+             <input id="float-input" type="text" pInputText [(ngModel)]="book.author" name="author" required>
+             <label for="float-input">Author</label>
+         </span>
+         <br>
+         <span class="ui-float-label">
+             <input id="float-input" type="text" pInputText [(ngModel)]="book.description" name="description" required>
+             <label for="float-input">Description</label>
+             <!-- <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize"></textarea> -->
+         </span>
+         <br>
+         <span class="ui-float-label">
+             <input id="float-input" type="text" pInputText [(ngModel)]="book.publisher" name="publisher" required>
+             <label for="float-input">Publisher</label>
+         </span>
+         <br>
+         <!-- <div class="ui-g-12 ui-md-4" style="display:block;">
+          <h5>Published Date</h5>
+          <p-calendar [(ngModel)]="book.published_date" name="book.published_date"></p-calendar>
+          </div> -->
+
+
+            <h5>Availability:</h5>
+            <div class="ui-g-12"><p-radioButton name="group1" value="Yes" label="Yes" [(ngModel)]="book.available" inputId="opt1"></p-radioButton></div>
+            <div class="ui-g-12"><p-radioButton name="group1" value="No" label="No" [(ngModel)]="book.available" inputId="opt2"></p-radioButton></div>
+
+
+
+          <h5>Genre:</h5>
+          <div class="ui-g" style="width:250px;margin-bottom:10px">
+              <div class="ui-g-12"><p-checkbox name="group2" value="Fiction" label="Fiction" [(ngModel)]="book.genre" inputId="Fiction"></p-checkbox></div>
+              <div class="ui-g-12"><p-checkbox name="group2" value="Science and Technology" label="Science and Technology" [(ngModel)]="book.genre" inputId="Science and Technology"></p-checkbox></div>
+              <div class="ui-g-12"><p-checkbox name="group2" value="Comic" label="Comic" [(ngModel)]="book.genre" inputId="Comic"></p-checkbox></div>
+              <div class="ui-g-12"><p-checkbox name="group2" value="Engineering" label="Engineering" [(ngModel)]="book.genre" inputId="Engineering"></p-checkbox></div>
+          </div>
+
+         <button mat-button type="submit" style="border: 1px solid;" [disabled]="!bookForm.form.valid" color="primary">SAVE</button>
+         </form>
+      </mat-card>
+    </mat-drawer-content>
+</mat-drawer-container>
+</div>
